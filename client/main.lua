@@ -454,3 +454,21 @@ RegisterNUICallback('select', function(data, cb)
         state.setActive(false)
     end
 end)
+
+RegisterCommand('targetui', function(source, args)
+    local theme = args[1]
+    if theme then
+        SendNuiMessage(json.encode({
+            event = 'setTheme',
+            theme = theme
+        }))
+        lib.notify({ description = 'Theme set to ' .. theme, type = 'success' })
+    else
+        lib.notify({ description = 'Available themes: red, green, purple, orange, pink, default', type = 'inform' })
+    end
+end, false)
+
+TriggerEvent('chat:addSuggestion', '/targetui', 'Change ox_target UI theme', {
+    { name="theme", help="red, green, purple, orange, pink, default" }
+})
+

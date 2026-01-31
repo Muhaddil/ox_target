@@ -28,3 +28,16 @@ https://github.com/communityox/ox_target/releases/latest/download/ox_target.zip
 - Partial compatibility for qtarget (the thing qb-target is based on, I made the original idiots).
 - Registering options no longer overrides existing options.
 - Groups and items checking for supported frameworks.
+
+## 🎨 UI Redesign & Fork Features
+
+This fork includes a complete visual overhaul and new functionality:
+
+- **Minimalist Design**: A clean, modern, and compact interface.
+- **Theme System**: 6 built-in color themes (Blue, Red, Green, Purple, Orange, Pink).
+- **Theme Persistence**: Your selected theme is saved automatically.
+- **In-Game Customization**: Use `/targetui` command to open the theme selector.
+- **Visual Improvements**:
+  - Proportional and animated central cursor.
+  - Smooth hover animations without layout shifting.
+  - High-contrast and accessible color palettes.

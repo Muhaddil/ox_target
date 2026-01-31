@@ -2,24 +2,29 @@ import { createOptions } from "./createOptions.js";
 
 const optionsWrapper = document.getElementById("options-wrapper");
 const body = document.body;
-const eye = document.getElementById("eyeSvg");
+const handIcon = document.querySelector("#hand i");
+
+const savedTheme = localStorage.getItem("ox_target_theme");
+if (savedTheme) {
+  body.setAttribute("data-theme", savedTheme);
+}
 
 window.addEventListener("message", (event) => {
   switch (event.data.event) {
     case "visible": {
       optionsWrapper.innerHTML = "";
       body.style.visibility = event.data.state ? "visible" : "hidden";
-      return eye.classList.remove("eye-hover");
+      return handIcon.classList.remove("hand-hover");
     }
 
     case "leftTarget": {
       optionsWrapper.innerHTML = "";
-      return eye.classList.remove("eye-hover");
+      return handIcon.classList.remove("hand-hover");
     }
 
     case "setTarget": {
       optionsWrapper.innerHTML = "";
-      eye.classList.add("eye-hover");
+      handIcon.classList.add("hand-hover");
 
       if (event.data.options) {
         for (const type in event.data.options) {
@@ -36,6 +41,15 @@ window.addEventListener("message", (event) => {
           });
         }
       }
+      break;
+    }
+
+    case "setTheme": {
+      if (event.data.theme) {
+        body.setAttribute("data-theme", event.data.theme);
+        localStorage.setItem("ox_target_theme", event.data.theme);
+      }
+      break;
     }
   }
 });
